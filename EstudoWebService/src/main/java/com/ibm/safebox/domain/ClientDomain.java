@@ -22,8 +22,6 @@ public class ClientDomain {
 	@NotEmpty(message = "Password cannot be null.")
 	private String password;
 	
-	private String publicKey;
-	
 	@Size(min = 14, max = 15, message = "Cellphone Me must be between 14 and 15 characters")
 	private String cellphone;
 	
@@ -71,14 +69,6 @@ public class ClientDomain {
 
 	public void setPassword(String password) {
 		this.password = password;
-	}
-
-	public String getPublicKey() {
-		return publicKey;
-	}
-
-	public void setPublicKey(String publicKey) {
-		this.publicKey = publicKey;
 	}
 
 	public String getCellphone() {

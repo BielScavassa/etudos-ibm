@@ -1,5 +1,6 @@
 package com.ibm.safebox.gateway.postgresql;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +25,16 @@ public class ClientGetwayImpl implements ClientGateway{
 
 	@Override
 	public List<ClientDomain> listAll() {
-		return null;
+		List<ClientEntity> clientEntityList = clientRepository.findAll();
+		List<ClientDomain> saveClientList = new ArrayList<ClientDomain>();
+		
+		if(clientEntityList != null) {
+			for(ClientEntity client : clientEntityList) {
+				saveClientList.add(clientMapper.mapToDomain(client));
+			}
+		}
+		
+		return saveClientList;
 	}
 
 	@Override

@@ -22,16 +22,15 @@ public class ClientMapper {
 	}
 	
 	public ClientDomain mapToDomain(ClientEntity client) {
-		ClientDomain clientEntity = new ClientDomain();
+		ClientDomain clientDomain = new ClientDomain();
 		
-		client.setId(clientEntity.getId());
-		client.setName(clientEntity.getName());
-		client.setLastName(clientEntity.getLastName());
-		client.setUsername(clientEntity.getUsername());
-		client.setPassword(clientEntity.getPassword());
-		client.setCellphone(clientEntity.getCellphone());
+		clientDomain.setId(client.getId());
+		clientDomain.setName(client.getName());
+		clientDomain.setLastName(client.getLastName());
+		clientDomain.setUsername(client.getUsername());
+		clientDomain.setPassword(client.getPassword());
+		clientDomain.setCellphone(client.getCellphone());
 		
-		return clientEntity;
+		return clientDomain;
 	}
-
 }

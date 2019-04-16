@@ -4,13 +4,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class CreateNewUserResponse {
 
-	@JsonProperty("ID")
+	@JsonProperty("id")
 	private long id;
-	@JsonProperty("NAME")
+	@JsonProperty("name")
 	private String name;
-	@JsonProperty("LASTNAME")
+	@JsonProperty("lastName")
 	private String lastName;
-	@JsonProperty("USERNAME")
+	@JsonProperty("username")
 	private String username;
 	
 	public CreateNewUserResponse() {

@@ -4,14 +4,18 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class CreateNewUserRequest {
 
-	@JsonProperty("NAME")
+	@JsonProperty("name")
 	private String name;
-	@JsonProperty("LASTNAME")
+	@JsonProperty("lastname")
 	private String lastName;
-	@JsonProperty("USERNAME")
+	@JsonProperty("username")
 	private String username;
-	@JsonProperty("PASSWORD")
+	@JsonProperty("password")
 	private String password;
+    @JsonProperty("cellphone")
+    private String cellphone;
+    @JsonProperty("birthdate")
+    private String birthdate;
 	
 	public CreateNewUserRequest() {
 	}
@@ -46,5 +50,21 @@ public class CreateNewUserRequest {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public String getCellphone() {
+		return cellphone;
+	}
+
+	public void setCellphone(String cellphone) {
+		this.cellphone = cellphone;
+	}
+
+	public String getBirthdate() {
+		return birthdate;
+	}
+
+	public void setBirthdate(String birthdate) {
+		this.birthdate = birthdate;
 	}
 }

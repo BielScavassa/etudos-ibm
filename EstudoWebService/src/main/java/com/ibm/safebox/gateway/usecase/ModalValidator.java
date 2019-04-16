@@ -1,15 +1,21 @@
 package com.ibm.safebox.gateway.usecase;
 
-import com.ibm.safebox.config.exception.FieldError;
-import com.ibm.safebox.config.exception.ValidationException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
+import javax.validation.ConstraintViolation;
+import javax.validation.Validator;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import javax.validation.ConstraintViolation;
-import javax.validation.Validator;
-import java.util.*;
+import com.ibm.safebox.config.exception.ValidationException;
+import com.ibm.safebox.domain.error.ErroField;
 
 @Component
 public class ModalValidator<T> {
@@ -31,18 +37,15 @@ public class ModalValidator<T> {
             validationsErro.forEach(tConstraintViolation ->
                     fieldMaps.computeIfAbsent(tConstraintViolation.getMessageTemplate(),
                             fields -> new ArrayList<>()).add(tConstraintViolation.getPropertyPath().toString()));
-            List<FieldError> errors = new ArrayList<>();
+            List<ErroField> errors = new ArrayList<>();
 
             fieldMaps.forEach((message,field)->{
-                errors.add(new FieldError(message,field));
+                errors.add(new ErroField(message,field));
             });
 
             log.info("Validation erro.  Reason: mandatory field not filled.");
 
             throw  new ValidationException("msg.error.fields.not.filled",errors);
-
-
         }
-
     }
 }
