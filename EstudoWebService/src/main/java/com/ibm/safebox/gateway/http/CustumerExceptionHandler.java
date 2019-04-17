@@ -16,9 +16,9 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-import com.ibm.safebox.config.exception.FeatureException;
-import com.ibm.safebox.config.exception.ValidationException;
 import com.ibm.safebox.domain.error.ErroField;
+import com.ibm.safebox.gateway.error.FeatureException;
+import com.ibm.safebox.gateway.error.ValidationException;
 import com.ibm.safebox.gateway.http.json.errorhandling.ErrorResponse;
 
 @ControllerAdvice

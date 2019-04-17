@@ -1,9 +1,10 @@
-package com.ibm.safebox.config.exception;
+package com.ibm.safebox.gateway.error;
 
 import java.io.Serializable;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.ibm.safebox.domain.error.ErroField;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ResponseError implements Serializable{
@@ -15,7 +16,7 @@ public class ResponseError implements Serializable{
 	private final String menssage;
 	private final String description;
 	
-	private List<FieldError> fieldsError;
+	private List<ErroField> fieldsError;
 	
 	public ResponseError(String menssage,String description) {
 		this.menssage = menssage;
@@ -23,7 +24,7 @@ public class ResponseError implements Serializable{
 		
 	}
 
-	public List<FieldError> getFieldsError() {
+	public List<ErroField> getFieldsError() {
 		return fieldsError;
 	}
 

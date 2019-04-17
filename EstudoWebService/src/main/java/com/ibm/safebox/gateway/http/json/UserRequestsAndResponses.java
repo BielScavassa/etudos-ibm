@@ -1,9 +1,13 @@
 package com.ibm.safebox.gateway.http.json;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class CreateNewUserRequest {
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class UserRequestsAndResponses {
 
+	@JsonProperty("id")
+	private Long id;
 	@JsonProperty("name")
 	private String name;
 	@JsonProperty("lastname")
@@ -17,7 +21,15 @@ public class CreateNewUserRequest {
     @JsonProperty("birthdate")
     private String birthdate;
 	
-	public CreateNewUserRequest() {
+	public UserRequestsAndResponses() {
+	}
+
+	public Long getId() {
+		return id;
+	}
+	
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getName() {

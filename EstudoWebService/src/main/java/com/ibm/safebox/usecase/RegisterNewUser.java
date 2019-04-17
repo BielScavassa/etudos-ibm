@@ -1,4 +1,4 @@
-package com.ibm.safebox.gateway.usecase;
+package com.ibm.safebox.usecase;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -20,6 +20,9 @@ public class RegisterNewUser {
 	
 	public ClientDomain execute(ClientDomain client) {
 		modalValidator.execute(client);
-		return clientGateway.save(client);
+		ClientDomain clientDomainSaved = clientGateway.save(client);
+		
+		clientDomainSaved.setPassword(null);
+		return clientDomainSaved;
 	}
 }

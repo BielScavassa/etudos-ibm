@@ -22,9 +22,22 @@ public class ClientGetwayImpl implements ClientGateway{
 		this.clientRepository = clientRepository;
 		this.clientMapper = clientMapper;
 	}
+	
+	@Override
+	public ClientDomain save(ClientDomain client) {
+		ClientEntity saveClient = clientRepository.save(clientMapper.mapToEntity(client));
+		
+		return clientMapper.mapToDomain(saveClient);
+	}
 
 	@Override
 	public List<ClientDomain> listAll() {
+		//Java8
+		//List<ClientDomain> clientList = clientRepository
+				//.findAll().stream().map(client-> clientMapper.mapToDomain(client))
+			//	.collect(Collectors.toList());		
+		//return clientList;
+		
 		List<ClientEntity> clientEntityList = clientRepository.findAll();
 		List<ClientDomain> saveClientList = new ArrayList<ClientDomain>();
 		
@@ -36,14 +49,4 @@ public class ClientGetwayImpl implements ClientGateway{
 		
 		return saveClientList;
 	}
-
-	@Override
-	public ClientDomain save(ClientDomain client) {
-		ClientEntity saveClient = clientRepository.save(clientMapper.mapToEntity(client));
-		
-		return clientMapper.mapToDomain(saveClient);
-	}
-
-
-
 }

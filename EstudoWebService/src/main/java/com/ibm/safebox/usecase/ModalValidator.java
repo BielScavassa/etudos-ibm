@@ -1,4 +1,4 @@
-package com.ibm.safebox.gateway.usecase;
+package com.ibm.safebox.usecase;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -14,8 +14,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.ibm.safebox.config.exception.ValidationException;
 import com.ibm.safebox.domain.error.ErroField;
+import com.ibm.safebox.gateway.error.ValidationException;
 
 @Component
 public class ModalValidator<T> {

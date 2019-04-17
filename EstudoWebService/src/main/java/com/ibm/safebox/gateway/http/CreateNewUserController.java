@@ -10,10 +10,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ibm.safebox.domain.ClientDomain;
-import com.ibm.safebox.gateway.http.json.CreateNewUserRequest;
-import com.ibm.safebox.gateway.http.json.CreateNewUserResponse;
+import com.ibm.safebox.gateway.http.json.UserRequestsAndResponses;
 import com.ibm.safebox.gateway.http.mapper.ClientMapper;
-import com.ibm.safebox.gateway.usecase.RegisterNewUser;
+import com.ibm.safebox.usecase.RegisterNewUser;
 
 @RestController
 @RequestMapping("/newuser")
@@ -30,9 +29,9 @@ public class CreateNewUserController {
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
-	public ResponseEntity<CreateNewUserResponse> save(@RequestBody CreateNewUserRequest client)  {
+	public ResponseEntity<UserRequestsAndResponses> save(@RequestBody UserRequestsAndResponses client)  {
 		ClientDomain savedClient = registerNewUser.execute(clientMapper.mapToDomain(client));
-		CreateNewUserResponse response = clientMapper.mapToReponse(savedClient);
+		UserRequestsAndResponses response = clientMapper.mapToReponse(savedClient);
 
 		log.info("create a new user - {}",client.getName());
 		

@@ -1,4 +1,4 @@
-package com.ibm.safebox.config.exception;
+package com.ibm.safebox.gateway.error;
 
 import com.ibm.safebox.domain.error.ErroField;
 

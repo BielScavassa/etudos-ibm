@@ -3,13 +3,12 @@ package com.ibm.safebox.gateway.http.mapper;
 import org.springframework.stereotype.Component;
 
 import com.ibm.safebox.domain.ClientDomain;
-import com.ibm.safebox.gateway.http.json.CreateNewUserRequest;
-import com.ibm.safebox.gateway.http.json.CreateNewUserResponse;
+import com.ibm.safebox.gateway.http.json.UserRequestsAndResponses;
 
 @Component("ClientMapperHttp")
 public class ClientMapper {
 
-	public ClientDomain mapToDomain(CreateNewUserRequest client) {
+	public ClientDomain mapToDomain(UserRequestsAndResponses client) {
 		ClientDomain clientDomain = new ClientDomain();
 		
 		clientDomain.setName(client.getName());
@@ -22,13 +21,16 @@ public class ClientMapper {
 		return clientDomain;
 	}
 	
-	public CreateNewUserResponse mapToReponse(ClientDomain client) {
-		CreateNewUserResponse clientResponse = new CreateNewUserResponse();
+	public UserRequestsAndResponses mapToReponse(ClientDomain client) {
+		UserRequestsAndResponses clientResponse = new UserRequestsAndResponses();
 
 		clientResponse.setId(client.getId());
 		clientResponse.setName(client.getName());
 		clientResponse.setLastName(client.getLastName());
 		clientResponse.setUsername(client.getUsername());
+		clientResponse.setPassword(client.getPassword());
+		clientResponse.setBirthdate(client.getBirthdate());
+		clientResponse.setCellphone(client.getCellphone());
 		
 		return clientResponse;
 	} 
