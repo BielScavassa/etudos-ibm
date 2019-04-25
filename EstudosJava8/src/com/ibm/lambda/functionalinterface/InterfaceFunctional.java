@@ -1,4 +1,4 @@
-package com.ibm.lambda;
+package com.ibm.lambda.functionalinterface;
 
 public interface InterfaceFunctional {
 
