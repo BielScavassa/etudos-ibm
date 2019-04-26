@@ -4,7 +4,9 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
@@ -69,5 +71,19 @@ public class Streams {
 		rows.map(x -> x.split(",")).filter(x -> x.length == 3).filter(x -> Integer.parseInt(x[1]) > 15)
 				.forEach(x -> System.out.println(x[0] + " " + x[1] + " " + x[2]));
 		rows.close();
+	}
+
+	static public void streamRowsHasMap() throws IOException {
+		Stream<String> rows = Files
+				.lines(Paths.get("C:\\Etudos-IBM\\EstudosJava8\\bin\\com\\ibm\\lambda\\texts\\Data.txt"));
+		Map<String, Integer> map = new HashMap<>();
+
+		map = rows.map(x -> x.split(",")).filter(x -> x.length == 3).filter(x -> Integer.parseInt(x[1]) > 15)
+				.collect(Collectors.toMap(x -> x[0], x -> Integer.parseInt(x[1])));
+		rows.close();
+		for(String key : map.keySet()) {
+			System.out.println(key + " " + map.get(key));
+		}
+
 	}
 }
