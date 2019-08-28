@@ -81,9 +81,22 @@ public class Streams {
 		map = rows.map(x -> x.split(",")).filter(x -> x.length == 3).filter(x -> Integer.parseInt(x[1]) > 15)
 				.collect(Collectors.toMap(x -> x[0], x -> Integer.parseInt(x[1])));
 		rows.close();
-		for(String key : map.keySet()) {
+		for (String key : map.keySet()) {
 			System.out.println(key + " " + map.get(key));
 		}
 
 	}
+
+	// Main
+//	Stream.intStreamRange();
+//	Stream.intStreamWithSkip();
+//	Streams.intStreamWithSum();
+//	Streams.streamOfSorted();
+//	Streams.arrayStreamFilter();
+//	Streams.arrayMapAverage();
+//	Streams.listStreamFilter();
+//	Streams.listStreamCollectors();
+//	Streams.streamRowsCount();
+//	Streams.streamRowsParse();
+
 }
