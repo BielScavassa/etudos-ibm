@@ -1,6 +1,6 @@
-package com.ibm.lambda.functionalinterface;
+package com.ibm.lambda.functionalinterface.models;
 
-public class DummyClassForTest implements DummyFunctionalInterface{
+public class DummyGerente implements DummyFunctionalInterface{
 
 	private String id;
 	private Integer nota;
@@ -8,7 +8,7 @@ public class DummyClassForTest implements DummyFunctionalInterface{
 	private Boolean ativo;
 	private Boolean vip;
 
-	public DummyClassForTest(String id, Integer nota, String nome, Boolean ativo, Boolean vip) {
+	public DummyGerente(String id, Integer nota, String nome, Boolean ativo, Boolean vip) {
 		this.id = id;
 		this.nota = nota;
 		this.nome = nome;
@@ -16,12 +16,12 @@ public class DummyClassForTest implements DummyFunctionalInterface{
 		this.vip = vip;
 	}
 	
-	public DummyClassForTest(String nome) {
+	public DummyGerente(String nome) {
 		this.nome = nome;
 	}
 
 	@Override
-	public String printName(DummyClassForTest dummy) {
+	public String printName(DummyGerente dummy) {
 		return null;
 	}
 
