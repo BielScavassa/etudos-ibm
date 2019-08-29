@@ -3,12 +3,14 @@ package com.ibm.lambda.functionalinterface;
 import java.io.IOException;
 import java.util.function.Function;
 
+import com.ibm.lambda.functionalinterface.models.DummyGerente;
+
 public class FunctionFunctionalInterface {
 
-	Function<String, DummyClassForTest> createDummy = dummy ->  new DummyClassForTest(dummy);
+	Function<String, DummyGerente> createDummy = dummy ->  new DummyGerente(dummy);
 	
 	private void testFunction(String nomeDummy) {
-		DummyClassForTest dummy = createDummy.apply(nomeDummy);
+		DummyGerente dummy = createDummy.apply(nomeDummy);
 		System.out.println("Dummy: " + dummy);
 	}
 	

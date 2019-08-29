@@ -3,22 +3,24 @@ package com.ibm.lambda.functionalinterface;
 import java.io.IOException;
 import java.util.function.Consumer;
 
+import com.ibm.lambda.functionalinterface.models.DummyGerente;
+
 public class ConsumerFunctionalInterface {
 
-	Consumer<DummyClassForTest> printNome = dummy -> System.out.println("Nome: " + dummy.getNome());
-	Consumer<DummyClassForTest> persistDummy = dummy -> persist(dummy);
+	Consumer<DummyGerente> printNome = dummy -> System.out.println("Nome: " + dummy.getNome());
+	Consumer<DummyGerente> persistDummy = dummy -> persist(dummy);
 	
-	private void testConsumer(DummyClassForTest dummy) {
+	private void testConsumer(DummyGerente dummy) {
 		printNome.accept(dummy); 
 		persistDummy.accept(dummy);
 	}
 
-	private void persist(DummyClassForTest dummy) {
+	private void persist(DummyGerente dummy) {
 		System.out.println("Persisting dummy: " + dummy.toString());
 	}
 	
-	private void testAndThen(DummyClassForTest dummy) {
-		Consumer<DummyClassForTest> printAndPersistDummy = printNome.andThen(persistDummy);
+	private void testAndThen(DummyGerente dummy) {
+		Consumer<DummyGerente> printAndPersistDummy = printNome.andThen(persistDummy);
 		printAndPersistDummy.accept(dummy);
 	}
 	
