@@ -9,6 +9,7 @@ public class Loja {
 	private String nomeLoja;
 	private String cidade;
 	private Integer flial;
+	private GerenteLoja dono;
 	private List<GerenteLoja> gerentes;
 
 	public Loja(String id, String nomeLoja, String cidade, Integer flial, List<GerenteLoja> gerentes) {
@@ -19,24 +20,35 @@ public class Loja {
 		this.gerentes = gerentes;
 	}
 
+	public Loja(String id, String nomeLoja, String cidade, Integer flial, GerenteLoja dono,
+			List<GerenteLoja> gerentes) {
+		this.id = id;
+		this.nomeLoja = nomeLoja;
+		this.cidade = cidade;
+		this.flial = flial;
+		this.dono = dono;
+		this.gerentes = gerentes;
+	}
+
 	public Loja(String nomeLoja, Integer flial) {
 		this.nomeLoja = nomeLoja;
 		this.flial = flial;
 	}
 
-	public Loja(String nomeLoja, Integer flial, List<GerenteLoja> gerentes) {
+	public Loja(String nomeLoja, Integer flial, GerenteLoja dono, List<GerenteLoja> gerentes) {
 		this.nomeLoja = nomeLoja;
 		this.flial = flial;
+		this.dono = dono;
 		this.gerentes = gerentes;
 	}
 
 	public static List<Loja> criarListaLojas() {
 		List<Loja> listaVendas = new ArrayList<Loja>();
 		List<GerenteLoja> gerentes = new ArrayList<GerenteLoja>();
-		GerenteLoja gerente = new GerenteLoja("Gerentinho");
+		GerenteLoja gerente = new GerenteLoja("Gerentinho", true);
 		gerentes.add(gerente);
 		for (int i = 0; i < 10; i++) {
-			Loja loja = new Loja(String.valueOf(i), i, gerentes);
+			Loja loja = new Loja(String.valueOf(i), i, gerente, gerentes);
 			listaVendas.add(loja);
 		}
 
@@ -83,10 +95,18 @@ public class Loja {
 		this.gerentes = gerentes;
 	}
 
+	public GerenteLoja getDono() {
+		return dono;
+	}
+
+	public void setDono(GerenteLoja dono) {
+		this.dono = dono;
+	}
+
 	@Override
 	public String toString() {
-		return "Loja [id=" + id + ", nomeLoja=" + nomeLoja + ", cidade=" + cidade + ", flial=" + flial + ", gerentes="
-				+ gerentes + "]";
+		return "Loja [id=" + id + ", nomeLoja=" + nomeLoja + ", cidade=" + cidade + ", flial=" + flial + ", dono="
+				+ dono + ", gerentes=" + gerentes + "]";
 	}
 
 }
