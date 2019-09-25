@@ -17,6 +17,30 @@ public class Turmas {
 		this.listaDeAlunos = listaDeAlunos;
 	}
 
+	public String getNomeDoCurso() {
+		return nomeDoCurso;
+	}
+
+	public void setNomeDoCurso(String nomeDoCurso) {
+		this.nomeDoCurso = nomeDoCurso;
+	}
+
+	public Integer getQuantidadeTotalDeAulas() {
+		return quantidadeTotalDeAulas;
+	}
+
+	public void setQuantidadeTotalDeAulas(Integer quantidadeTotalDeAulas) {
+		this.quantidadeTotalDeAulas = quantidadeTotalDeAulas;
+	}
+
+	public List<Aluno> getListaDeAlunos() {
+		return listaDeAlunos;
+	}
+
+	public void setListaDeAlunos(List<Aluno> listaDeAlunos) {
+		this.listaDeAlunos = listaDeAlunos;
+	}
+
 	public Boolean matricularAluno(Aluno al) {
 		if (listaDeAlunos.size() > 20) {
 			System.out.println("false");
@@ -115,27 +139,4 @@ public class Turmas {
 		}
 	}
 
-	public String getNomeDoCurso() {
-		return nomeDoCurso;
-	}
-
-	public void setNomeDoCurso(String nomeDoCurso) {
-		this.nomeDoCurso = nomeDoCurso;
-	}
-
-	public Integer getQuantidadeTotalDeAulas() {
-		return quantidadeTotalDeAulas;
-	}
-
-	public void setQuantidadeTotalDeAulas(Integer quantidadeTotalDeAulas) {
-		this.quantidadeTotalDeAulas = quantidadeTotalDeAulas;
-	}
-
-	public List<Aluno> getListaDeAlunos() {
-		return listaDeAlunos;
-	}
-
-	public void setListaDeAlunos(List<Aluno> listaDeAlunos) {
-		this.listaDeAlunos = listaDeAlunos;
-	}
 }
