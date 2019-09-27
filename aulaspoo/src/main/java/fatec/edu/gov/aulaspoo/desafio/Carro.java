@@ -15,6 +15,14 @@ public class Carro {
 		this.tipoDeRoda = tipoDeRoda;
 		this.preco = preco;
 	}
+	
+	//construtor copia
+	public Carro(Carro carro) {
+		this.tipoDeRoda = carro.getTipoDeRoda();
+		this.modelo = carro.getModelo();
+		this.ano = carro.getAno();
+		this.preco = carro.getPreco();
+	}
 
 	public String getModelo() {
 		return this.modelo;

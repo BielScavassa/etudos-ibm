@@ -13,7 +13,7 @@ public class ClientFeignErrorDecoder implements ErrorDecoder {
 	@Override
 	public Exception decode(String methodKey, Response response) {
 		if (response.status() >= 500 && response.status() <= 599) {
-			throw new ClientBadRequestException("Bad Request Feign");
+			throw new ClientBadRequestException("Not Found Feign");
 		}
 		return defaultErrorDecoder.decode(methodKey, response);
 	}

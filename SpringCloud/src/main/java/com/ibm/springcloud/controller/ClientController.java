@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ibm.springcloud.client.ClienteServiceClient;
 import com.ibm.springcloud.model.Cliente;
 
+import feign.Logger;
+
 @RestController
 public class ClientController {
 
