@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 public class ClientExceptionHandler {
 
 	@ResponseBody
-	@ExceptionHandler(value = ClientBadRequestException.class)
-	public ResponseEntity<?> exceptionHandler(ClientBadRequestException exception){
-		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(exception.getMessage());
+	@ExceptionHandler(value = ClienteNotFoundException.class)
+	public ResponseEntity<?> exceptionHandler(ClienteNotFoundException exception){
+		return ResponseEntity.status(HttpStatus.NOT_FOUND).body(exception.getMessage());
 	}
 }

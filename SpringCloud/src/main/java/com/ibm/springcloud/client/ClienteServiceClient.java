@@ -17,4 +17,7 @@ public interface ClienteServiceClient {
 	
 	@GetMapping("/endereco/{id}")
 	public String buscarEnderecoCliente(@PathVariable Long id);
+	
+	@GetMapping("/nome/{id}")
+	public String buscarNomeCliente(@PathVariable Long id);
 }

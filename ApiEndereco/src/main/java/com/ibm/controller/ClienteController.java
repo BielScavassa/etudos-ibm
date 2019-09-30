@@ -19,9 +19,13 @@ import javassist.NotFoundException;
 @RequestMapping("/cliente")
 public class ClienteController {
 
-	@Autowired
-	ClienteService clienteService;
+	private ClienteService clienteService;
 	
+	@Autowired	
+	public ClienteController(ClienteService clienteService) {
+		this.clienteService = clienteService;
+	}
+
 	@GetMapping("/listar")
 	public ResponseEntity<List<ClienteModel>> clientes(){
 		return ResponseEntity.status(HttpStatus.OK).body(clienteService.buscarClientes());
@@ -30,5 +34,10 @@ public class ClienteController {
 	@GetMapping("/endereco/{id}")
 	public ResponseEntity<String> enderecoCliente(@PathVariable Long id) throws NotFoundException{
 		return ResponseEntity.status(HttpStatus.OK).body(clienteService.buscarEnderecoCliente(id));
+	}
+	
+	@GetMapping("/nome/{id}")
+	public ResponseEntity<String> nomeCliente(@PathVariable Long id) throws NotFoundException{
+		return ResponseEntity.status(HttpStatus.OK).body(clienteService.buscarNomeCliente(id));
 	}
 }
