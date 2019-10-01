@@ -37,7 +37,7 @@ public class ClienteController {
 	}
 	
 	@GetMapping("/nome/{id}")
-	public ResponseEntity<String> nomeCliente(@PathVariable Long id) throws NotFoundException{
+	public ResponseEntity<String> nomeCliente(@PathVariable Long id) throws NotFoundException, InterruptedException{
 		return ResponseEntity.status(HttpStatus.OK).body(clienteService.buscarNomeCliente(id));
 	}
 }
