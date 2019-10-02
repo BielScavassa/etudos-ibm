@@ -29,7 +29,7 @@ public class ClienteService {
 
 	public String buscarNomeCliente(Long id) throws NotFoundException, InterruptedException{
 		Thread.sleep(3000);
-		LOG.info("Trying to buscarNomeCliente " + Thread.currentThread().getName());
+		LOG.info("Trying to buscarNomeCliente " + Thread.currentThread());
 		Optional<ClienteModel> cliente = clienteRepository.findById(id);
 		if (cliente.isPresent()) {
 			LOG.info("Retorno buscarNomeCliente: " + cliente.get().getNome());
@@ -41,7 +41,7 @@ public class ClienteService {
 	}
 	
 	public String buscarEnderecoCliente(Long id) throws NotFoundException {
-		LOG.info("Trying to buscarEnderecoCliente " + Thread.currentThread().getName());
+		LOG.info("Trying to buscarEnderecoCliente " + Thread.currentThread());
 		Optional<ClienteModel> cliente = clienteRepository.findById(id);
 		if (cliente.isPresent()) {
 			LOG.info("Retorno buscarEnderecoCliente: " + cliente.get().getEndereco());
