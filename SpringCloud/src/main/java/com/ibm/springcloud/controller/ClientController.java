@@ -32,15 +32,28 @@ public class ClientController {
 		return ResponseEntity.status(HttpStatus.OK).body(clienteServiceClient.buscarClientes());
 	}
 
+	@GetMapping("/buscarNomeCliente/{id}")
+	public ResponseEntity<String> nomeCliente(@PathVariable Long id) {
+		return ResponseEntity.ok(clienteServiceClient.buscarNomeCliente(id));
+	}
+	
 	@GetMapping("/buscarEnderecoCliente/{id}")
 	public ResponseEntity<String> enderecoCliente(@PathVariable Long id) {
 		return ResponseEntity.ok(clienteServiceClient.buscarEnderecoCliente(id));
 	}
 
+	@GetMapping("/buscarNomeClienteAsync/{id}")
+	public ResponseEntity<String> nomeClienteAsync(@PathVariable Long id)
+			throws InterruptedException, ExecutionException {
+		CompletableFuture<String> nome = clientesApiService.getNome(id);
+		return ResponseEntity.ok(nome.get());
+	}
+	
 	@GetMapping("/buscarEnderecoClienteAsync/{id}")
-	public String enderecoClienteAsync(@PathVariable Long id) throws InterruptedException, ExecutionException {
-		ResponseEntity<CompletableFuture<String>> retorno = ResponseEntity.ok(clientesApiService.getEndereco(id));
-		return retorno.getBody().get();
+	public ResponseEntity<String> enderecoClienteAsync(@PathVariable Long id)
+			throws InterruptedException, ExecutionException {
+		CompletableFuture<String> endereco = clientesApiService.getEndereco(id);
+		return ResponseEntity.ok(endereco.get());
 	}
 
 	@GetMapping("/listarClientesAsync")
@@ -51,18 +64,25 @@ public class ClientController {
 	}
 
 	@GetMapping("/buscarNomeEnderecoClienteAsync/{id}")
-	public String nomeEnderecoClienteAsync(@PathVariable Long id) throws InterruptedException, ExecutionException {
-		CompletableFuture<String> asyncNome = clientesApiService.getNome(id);
-		CompletableFuture<String> asyncEndereco = clientesApiService.getEndereco(id);
-		return asyncNome.thenCombineAsync(asyncEndereco, (endereco, nome ) -> nome + "\n" + endereco).get();
-	}
-
-	@GetMapping("/buscarNomeEnderecoClienteCombineAsync/{id}")
 	public ResponseEntity<String> nomeEnderecoClienteCombineAsync(@PathVariable Long id)
 			throws InterruptedException, ExecutionException {
 		CompletableFuture<String> nomeEndereco = clientesApiService.getNome(id)
 				.thenCombineAsync(clientesApiService.getEndereco(id), (nome, endereco) -> nome + "\n" + endereco);
 		return ResponseEntity.ok(nomeEndereco.get());
+	}
+
+	@GetMapping("/buscarNomeEnderecoModificadoClienteAsync/{id}")
+	public ResponseEntity<String> nomeEnderecoClienteAsync(@PathVariable Long id)
+			throws InterruptedException, ExecutionException {
+		CompletableFuture<String> nome = clientesApiService.getNome(id);
+		CompletableFuture<String> endereco = clientesApiService.getEndereco(id);
+
+		CompletableFuture<String> nomeEnderecoModificado = nome
+				.thenApplyAsync(nomeModificado -> "Nome: " + nomeModificado)
+				.thenCombineAsync(endereco.thenApplyAsync(enderecoModificado -> "Endereco: "),
+						(nomeModificado, enderecoModificado) -> nomeModificado + "\n" + enderecoModificado);
+
+		return ResponseEntity.ok(nomeEnderecoModificado.get());
 	}
 
 }

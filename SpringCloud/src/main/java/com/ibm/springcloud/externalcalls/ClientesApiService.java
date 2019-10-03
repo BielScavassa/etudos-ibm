@@ -41,6 +41,16 @@ public class ClientesApiService {
 	}
 	
 	@Async
+	public CompletableFuture<String> getNomeEnderecoModificado(Long id) throws InterruptedException {
+		LOG.info("Trying to buscarNomeCliente " + Thread.currentThread() + "\n");
+		CompletableFuture<String> nomeEnderecoModificado = getNome(id)
+				.thenApplyAsync(nome -> "Nome: " + nome).thenCombineAsync(getEndereco(id)
+						.thenApplyAsync(endereco -> "Endereco: " + endereco), (nome, endereco) -> nome + "\n" + endereco);
+		LOG.info("Retorno buscarNomeCliente: " + nomeEnderecoModificado);
+		return nomeEnderecoModificado;
+	}
+	
+	@Async
 	public CompletableFuture<List<Cliente>> getClientes() {
 		return CompletableFuture.completedFuture(clienteServiceClient.buscarClientes());
 	}
