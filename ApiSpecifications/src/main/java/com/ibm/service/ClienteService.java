@@ -1,51 +1,60 @@
 package com.ibm.service;
 
 import java.util.List;
-import java.util.Optional;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
-import com.ibm.exception.NaoEncontradoException;
 import com.ibm.model.ClienteModel;
 import com.ibm.repository.ClienteRepository;
 import com.ibm.specification.ClienteSpecification;
-import com.ibm.specification.SearchCriteria;
-
-import javassist.NotFoundException;
+import com.ibm.specification.ClienteCriteria;
+import com.ibm.specification.example.ClienteSpecificationBuilderExample;
+import com.ibm.specification.example.ClienteSpecificationExample;
+import com.ibm.specification.example.SearchCriteriaExample;
 
 @Service
 public class ClienteService {
 
-	private final static Logger LOG = LoggerFactory.getLogger(ClienteService.class);
-
 	@Autowired
 	ClienteRepository clienteRepository;
 
-	public List<ClienteModel> buscarClientesPorSobrenome(SearchCriteria searchCriteria) {
-		ClienteSpecification clienteSpecification = new ClienteSpecification(searchCriteria);
+	
+	public List<ClienteModel> buscarClientesByClienteCriteria(ClienteCriteria clienteCriteria) {
+		ClienteSpecification clientSpecification = new ClienteSpecification(clienteCriteria);
+		return clienteRepository.findAll(clientSpecification);
+	}
+	
+	
+//	-------------------------------------------Beldung Example -------------------------------------------
+	
+	public List<ClienteModel> buscarClientesUnicoCriterioDePesquisa(SearchCriteriaExample searchCriteria) {
+		ClienteSpecificationExample clienteSpecification = new ClienteSpecificationExample(searchCriteria);
 		return clienteRepository.findAll(clienteSpecification);
 	}
 
-	public String buscarNomeCliente(Long id) throws NotFoundException, InterruptedException{
-		Optional<ClienteModel> cliente = clienteRepository.findById(id);
-		if (cliente.isPresent()) {
-			return cliente.get().getNome();
-		} else {
-			throw new NaoEncontradoException("Nome");
-		}
-	}
-	
-	public String buscarEmailCliente(Long id) throws NotFoundException {
-		Optional<ClienteModel> cliente = clienteRepository.findById(id);
-		if (cliente.isPresent()) {
-			return cliente.get().getEmail();
-		} else {
-			throw new NaoEncontradoException("Email");
+	public List<ClienteModel> buscarClientesDoisCriteriosDePesquisa(SearchCriteriaExample searchCriteria01,
+			SearchCriteriaExample searchCriteria02) {
+		ClienteSpecificationExample clienteSpec01 = new ClienteSpecificationExample(searchCriteria01);
+		ClienteSpecificationExample clienteSpec02 = new ClienteSpecificationExample(searchCriteria02);
+		return clienteRepository.findAll(Specification.where(clienteSpec01).and(clienteSpec02));
+	} 
+
+	//WIP
+	public List<ClienteModel> buscarClientesListaCriterios(String pesquisa) {
+		ClienteSpecificationBuilderExample builder = new ClienteSpecificationBuilderExample();
+		Pattern pattern = Pattern.compile("(\\w+?)(:|<|>)(\\w+?),");
+		Matcher matcher = pattern.matcher(pesquisa + ",");
+		while (matcher.find()) {
+			builder.with(matcher.group(1), matcher.group(2), matcher.group(3), matcher.group(4));
 		}
 
+		Specification<ClienteModel> spec = builder.build();
+
+		return clienteRepository.findAll(spec);
 	}
-	
+
 }

@@ -1,8 +1,11 @@
 insert into cliente
-values(01L, 'Email 01', 19, 'Nome 01', 'Sobrenome 01');
+values(01L, 'Antonio@hotmail', 19, 'Antonio', 'Jarbas');
 
 insert into cliente
-values(02L, 'Email 02', 20, 'Nome 02', 'Sobrenome 02');
+values(02L, 'Cleytom@gmail', 20, 'Claytom', 'Jose');
 
 insert into cliente
-values(03L, 'Email 03', 21, 'Nome 03', 'Sobrenome 03');
+values(03L, 'Ana@yahoo', 21, 'Ana', 'Mary');
+
+insert into cliente
+values(04L, 'Airtom@yahoo', 22, 'Airtom', 'Sena');
