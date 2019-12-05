@@ -8,8 +8,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class XmlParserRoute extends RouteBuilder {
 
-    private static final String DIRECT_ROUTE_XML_PARSER = "direct:xml_parser_route";
-    private static final String ID_ROUTE_XML_PARSER = "xml_parser_route";
+    public static final String DIRECT_ROUTE_XML_PARSER = "direct:xml_parser_route";
+    public static final String ID_ROUTE_XML_PARSER = "xml_parser_route";
     private final XmlParserProcessor xmlParserProcessor;
 
     @Autowired

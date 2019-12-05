@@ -1,24 +1,25 @@
-package staxon;
-
-import de.odysseus.staxon.json.JsonXMLConfig;
-import de.odysseus.staxon.json.JsonXMLConfigBuilder;
-import de.odysseus.staxon.json.JsonXMLOutputFactory;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 
 import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
 import javax.xml.stream.XMLStreamWriter;
-import javax.xml.transform.*;
+import javax.xml.transform.Result;
+import javax.xml.transform.Source;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.stax.StAXResult;
 import javax.xml.transform.stax.StAXSource;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
+
+import de.odysseus.staxon.json.JsonXMLConfig;
+import de.odysseus.staxon.json.JsonXMLConfigBuilder;
+import de.odysseus.staxon.json.JsonXMLOutputFactory;
 
 public class MainXmlParserJson {
 
-
-    public static void main(String[] args) throws XMLStreamException, TransformerException, IOException {
+    public static void main(String[] args) throws TransformerException, XMLStreamException, IOException {
         InputStream input = MainXmlParserJson.class.getResourceAsStream("XmlParser.xml");
         OutputStream output = System.out;
         /*

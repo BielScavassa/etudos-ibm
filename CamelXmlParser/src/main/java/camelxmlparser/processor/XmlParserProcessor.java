@@ -28,7 +28,7 @@ public class XmlParserProcessor implements Processor {
 
     @Override
     public void process(Exchange exchange) throws Exception {
-        InputStream input = XmlParserProcessor.class.getResourceAsStream("XmlParser.txt");
+        InputStream input = (InputStream) exchange.getIn().getBody();
         OutputStream output = System.out;
 
         JsonXMLConfig config = new JsonXMLConfigBuilder()
