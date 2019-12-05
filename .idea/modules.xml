@@ -2,15 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/ApiEndereco/ApiEndereco.iml" filepath="$PROJECT_DIR$/ApiEndereco/ApiEndereco.iml" />
       <module fileurl="file://$PROJECT_DIR$/ApiSpecifications/ApiSpecifications.iml" filepath="$PROJECT_DIR$/ApiSpecifications/ApiSpecifications.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Basic-Camel/Basic-Camel.iml" filepath="$PROJECT_DIR$/Basic-Camel/Basic-Camel.iml" />
-      <module fileurl="file://$PROJECT_DIR$/EstudoWebService/EstudoWebService.iml" filepath="$PROJECT_DIR$/EstudoWebService/EstudoWebService.iml" />
-      <module fileurl="file://$PROJECT_DIR$/EstudosJava8/EstudosJava8.iml" filepath="$PROJECT_DIR$/EstudosJava8/EstudosJava8.iml" />
-      <module fileurl="file://$PROJECT_DIR$/EurekaNetflixServer/EurekaNetflixServer.iml" filepath="$PROJECT_DIR$/EurekaNetflixServer/EurekaNetflixServer.iml" />
-      <module fileurl="file://$PROJECT_DIR$/SpringCloud/SpringCloud.iml" filepath="$PROJECT_DIR$/SpringCloud/SpringCloud.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Basic-Camel/bin/camel-alura.iml" filepath="$PROJECT_DIR$/Basic-Camel/bin/camel-alura.iml" />
-      <module fileurl="file://$PROJECT_DIR$/spring-bot-FirsWebApplication/spring-bot-FirsWebApplication.iml" filepath="$PROJECT_DIR$/spring-bot-FirsWebApplication/spring-bot-FirsWebApplication.iml" />
     </modules>
   </component>
 </project>

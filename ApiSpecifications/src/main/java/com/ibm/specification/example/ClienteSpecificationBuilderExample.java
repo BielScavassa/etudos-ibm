@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.domain.Specification;
 
-import com.ibm.model.ClienteModel;
+import com.ibm.model.ContaCliente;
 
 import lombok.Data;
 
@@ -37,13 +37,13 @@ public class ClienteSpecificationBuilderExample {
 		return this;
 	}
 
-	public Specification<ClienteModel> build() {
+	public Specification<ContaCliente> build() {
 		if (this.params.size() == 0)
 			return null;
 
-		List<Specification<ClienteModel>> specs = params.stream().map(ClienteSpecificationExample::new)
+		List<Specification<ContaCliente>> specs = params.stream().map(ClienteSpecificationExample::new)
 				.collect(Collectors.toList());
-		Specification<ClienteModel> result = specs.get(0);
+		Specification<ContaCliente> result = specs.get(0);
 
 		for (int i = 1; i < params.size(); i++) {
 			result = params.get(i).isOrPredicate() ? Specification.where(result).or(specs.get(i))
