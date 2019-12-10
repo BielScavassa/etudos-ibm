@@ -1,5 +1,6 @@
 package camelxmlparser;
 
+import camelxmlparser.processor.XmlParserMapProcessor;
 import camelxmlparser.processor.XmlParserProcessor;
 import camelxmlparser.rout.XmlParserRoute;
 import org.apache.camel.CamelContext;
@@ -13,7 +14,7 @@ public class MainCamelXmlParser {
 
     public static void main(String[] args) {
         CamelContext camelContext = new DefaultCamelContext();
-        RouteBuilder xmlParseRoute = new XmlParserRoute(new XmlParserProcessor());
+        RouteBuilder xmlParseRoute = new XmlParserRoute(new XmlParserProcessor(), new XmlParserMapProcessor());
         XmlParserProcessor xmlParserProcessor = new XmlParserProcessor();
 
         try {
