@@ -8,14 +8,14 @@ import javax.persistence.criteria.Root;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.domain.Specification;
 
-import com.ibm.model.ContaCliente;
+import com.ibm.model.ClienteModel;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-public class ClienteSpecificationExample implements Specification<ContaCliente> {
+public class ClienteSpecificationExample implements Specification<ClienteModel> {
 
 	private SearchCriteriaExample criteria;
 
@@ -25,7 +25,7 @@ public class ClienteSpecificationExample implements Specification<ContaCliente> 
 	}
 
 	@Override
-	public Predicate toPredicate(Root<ContaCliente> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
+	public Predicate toPredicate(Root<ClienteModel> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
 		if (criteria.getOperation().equalsIgnoreCase(">")) {
 			return criteriaBuilder.greaterThanOrEqualTo(root.<String>get(criteria.getKey()),
 					criteria.getValue().toString());

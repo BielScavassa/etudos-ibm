@@ -1,17 +1,11 @@
-insert into cliente (NOME, CPF, IDADE, NUMERO_CONTA, AGENCIA, ULTIMA_MOV, SALDO_CONTA)
-values('Antonio', '325.745.258-84', 19, '122388464', '8562', '2019-05-05', 2500.00);
+insert into cliente
+values(01L, 'Antonio@hotmail', 19, 'Antonio', 'Jarbas');
 
-insert into cliente (NOME, CPF, IDADE, NUMERO_CONTA, AGENCIA, ULTIMA_MOV, SALDO_CONTA)
-values('Mary', '325.745.258-81', 21, '122388411', '8511', '2019-01-01', 3000.00);
+insert into cliente
+values(02L, 'Cleytom@gmail', 20, 'Claytom', 'Jose');
 
-insert into cliente (NOME, CPF, IDADE, NUMERO_CONTA, AGENCIA, ULTIMA_MOV, SALDO_CONTA)
-values('Airtom', '325.745.258-82', 22, '122388422', '8522', '2019-02-02', 3500.00);
+insert into cliente
+values(03L, 'Ana@yahoo', 21, 'Ana', 'Mary');
 
-insert into cliente (NOME, CPF, IDADE, NUMERO_CONTA, AGENCIA, ULTIMA_MOV, SALDO_CONTA)
-values('Antonio', '325.745.258-83', 21, '122388433', '853', '2019-03-03', 1500.00);
-
-insert into cliente (NOME, CPF, IDADE, NUMERO_CONTA, AGENCIA, ULTIMA_MOV, SALDO_CONTA)
-values('Jorge', '325.745.258-84', 20, '122388444', '854', '2019-04-04', 1700.00);
-
-insert into cliente (NOME, CPF, IDADE, NUMERO_CONTA, AGENCIA, ULTIMA_MOV, SALDO_CONTA)
-values('Claytom', '325.745.258-85', 20, '122388455', '855', '2019-05-05', 3100.00);
+insert into cliente
+values(04L, 'Airtom@yahoo', 22, 'Airtom', 'Sena');

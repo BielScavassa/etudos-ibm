@@ -4,9 +4,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.stereotype.Repository;
 
-import com.ibm.model.ContaCliente;
+import com.ibm.model.ClienteModel;
 
 @Repository
-public interface ClienteRepositorySpring extends JpaRepository<ContaCliente, Long>, JpaSpecificationExecutor<ContaCliente> {
+public interface ClienteRepository extends JpaRepository<ClienteModel, Long>, JpaSpecificationExecutor<ClienteModel> {
 
 }

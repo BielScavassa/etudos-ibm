@@ -15,6 +15,5 @@ public class ClienteCriteria {
 	private Integer idade;
 	private Integer idadeMinima;
 	private Integer idadeMaxima;
-	private Integer somaIdades;
 	
 }
