@@ -1,3 +1,3 @@
 # Etudos-IBM
 
-Reposit�rio para salvar estudos realizados na IBM.
+Repositório criado com o objetivo de salvar estudos realizados para adquirir skills necessárias em demandas da IBM.
